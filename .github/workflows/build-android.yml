@@ -40,7 +40,11 @@ jobs:
 
       - name: Generate Android native project
         working-directory: chronicles-of-the-cursed
-        run: npx expo prebuild --platform android --clean
+        run: npx expo prebuild --platform android --clean --no-install
+
+      - name: Install updated native dependencies
+        working-directory: chronicles-of-the-cursed
+        run: pnpm install --no-frozen-lockfile
 
       - name: Make Gradle executable
         working-directory: chronicles-of-the-cursed/android
