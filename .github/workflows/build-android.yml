@@ -5,6 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+env:
+  CI: "1"
+  EXPO_NO_TELEMETRY: "1"
+
 jobs:
   build-android:
     name: Build Android APK
@@ -37,8 +41,6 @@ jobs:
       - name: Generate Android native project
         working-directory: chronicles-of-the-cursed
         run: npx expo prebuild --platform android --clean
-        env:
-          EXPO_NO_TELEMETRY: "1"
 
       - name: Make Gradle executable
         working-directory: chronicles-of-the-cursed/android
